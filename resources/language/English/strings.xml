@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Plugin name -->
+    <string id="30000">Tunir</string>
+
+    <!-- Modes -->
+    <string id="30010">Genres</string>
+    <string id="30011">Locations</string>
+    <string id="30012">Languages</string>
+    <string id="30013">My Stations</string>
+    <string id="30014">Editor's Choice</string>
+    <string id="30015">Search</string>
+
+    <!-- Categories (type) -->
+    <string id="30020">Music</string>
+    <string id="30021">Talk</string>
+    <string id="30022">Television</string>
+    <string id="30023">Webcam</string>
+
+    <!-- Categories (location) -->
+    <string id="30030">Africa</string>
+    <string id="30031">Asia</string>
+    <string id="30032">Caribbean</string>
+    <string id="30033">Central America</string>
+    <string id="30034">Europe</string>
+    <string id="30035">Internet Only</string>
+    <string id="30036">Middle East</string>
+    <string id="30037">North America</string>
+    <string id="30038">United States</string>
+    <string id="30039">Oceania</string>
+    <string id="30040">South America</string>
+
+    <!-- Misc -->
+    <string id="30100">stations found</string>
+    <string id="30101">Back to first page</string>
+    <string id="30102">Go to next page</string>
+    <string id="30103">Search for stations and broadcasts</string>
+
+    <!-- Favorites -->
+     <string id="30120">Add to my stations</string>
+     <string id="30121">Remove from my stations</string>
+     <string id="30122">Station successfully added to your stations list</string>
+     <string id="30123">Station successfully removed from your stations list</string>
+     <string id="30124">Station is already in your stations list</string>
+</strings>
