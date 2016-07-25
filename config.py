@@ -22,7 +22,7 @@ config = {
 }
 
 config['endpoints']['by_type'] = '{0}/StartPage.asp?sBrowseType={1}'\
-    .format(config['endpoints']['base_url'],config['types']['by_type'])
+    .format(config['endpoints']['base_url'], config['types']['by_type'])
 config['endpoints']['by_language'] = '{0}/StartPage.asp?sBrowseType={1}'\
     .format(config['endpoints']['base_url'], config['types']['by_language'])
 config['endpoints']['by_location'] = '{0}/StartPage.asp?sBrowseType={1}'\

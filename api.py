@@ -75,7 +75,8 @@ class API(object):
     def get_categories(self, mode):
         """
         Get mode's categories
-        :return: ListItem objects array
+        :param mode:
+        :return:
         """
         switcher = {
             'by_type': [
@@ -223,23 +224,28 @@ class API(object):
     def get_subcategories(self, mode, category):
         """
         Get category's items
-        :return: ListItem objects array
+        :param mode:
+        :param category:
+        :return:
         """
         r = requests.get(config['endpoints'][mode])
         items = []
 
         if r.status_code == 200:
             soup = BeautifulSoup(r.content, 'html5lib')
-            links = soup.find('img', src='../../images/{0}.gif'.format(category)).parent.parent.find_next('tr').find_all('a')
+            links = soup.find('img', src='../../images/{0}.gif'.format(category)).parent.parent.find_next(
+                'tr').find_all('a')
             for item in links:
                 matches = re.search('^([\w\-&() ]+) \((\d+)\)$', item.get_text())
                 items.append({
                     'label': matches.group(1),
                     'icon': config['icons'][mode],
-                    'path': self.plugin.url_for('show_items', mode=mode, category=category, index='1', link=item.get('href')),
+                    'path': self.plugin.url_for('show_items', mode=mode, category=category, index='1',
+                                                link=item.get('href')),
                     'properties': {
                         'fanart_image': self.plugin.addon.getAddonInfo('fanart'),
-                        'artist_description': u'[B]{0}[/B][CR]{1} {2}'.format(matches.group(1), matches.group(2), self.plugin.get_string(30100))
+                        'artist_description': u'[B]{0}[/B][CR]{1} {2}'.format(matches.group(1), matches.group(2),
+                                                                              self.plugin.get_string(30100))
                     }
                 })
 
@@ -324,15 +330,21 @@ class API(object):
     def get_items(self, mode, category, link, index):
         """
         Get sub-category's items
-        :return: ListItem objects array
+        :param mode:
+        :param category:
+        :param link:
+        :param index:
+        :return:
         """
         items = []
         if 'Startpage.asp' in link:
-            full_link = '{0}/BrowsePremiumStations.asp?{1}&sWhatList=ALL&sSortby=AA&iCurrPage='\
-                .format(config['endpoints']['base_url'], urllib.unquote(link.replace('../BrowseStations/Startpage.asp?', '')).decode('utf8'))
+            full_link = '{0}/BrowsePremiumStations.asp?{1}&sWhatList=ALL&sSortby=AA&iCurrPage=' \
+                .format(config['endpoints']['base_url'],
+                        urllib.unquote(link.replace('../BrowseStations/Startpage.asp?', '')).decode('utf8'))
         else:
-            full_link = '{0}/BrowsePremiumStations.asp?{1}&sWhatList=ALL&sSortby=AA&iCurrPage='\
-                .format(config['endpoints']['base_url'], urllib.unquote(link.replace('../BrowseStations/BrowsePremiumStations.asp?', '')).decode('utf8'))
+            full_link = '{0}/BrowsePremiumStations.asp?{1}&sWhatList=ALL&sSortby=AA&iCurrPage=' \
+                .format(config['endpoints']['base_url'],
+                        urllib.unquote(link.replace('../BrowseStations/BrowsePremiumStations.asp?', '')).decode('utf8'))
         r = requests.get(full_link + index)
         if r.status_code == 200:
             # Add link to previous page:
@@ -373,7 +385,8 @@ class API(object):
                     items.append({
                         'label': self.plugin.get_string(30102),
                         'icon': 'DefaultFolder.png',
-                        'path': self.plugin.url_for('show_items', mode=mode, category=category, index=str(int(index) + 1), link=link),
+                        'path': self.plugin.url_for('show_items', mode=mode, category=category,
+                                                    index=str(int(index) + 1), link=link),
                         'properties': {
                             'fanart_image': self.plugin.addon.getAddonInfo('fanart')
                         }
@@ -383,7 +396,9 @@ class API(object):
     def search_items(self, query, index='1'):
         """
         Get sub-category's items
-        :return: ListItem objects array
+        :param query:
+        :param index:
+        :return:
         """
         items = []
         full_link = '{0}{1}'.format(config['endpoints']['base_url'],
@@ -435,21 +450,21 @@ class API(object):
         """
         favorites = self.plugin.get_storage('favorites')
         return [{
-            'label': item[1]['title'],
-            'icon': config['icons']['by_favorites'],
-            'path': 'http://www.vtuner.com/vtunerweb/mms/m3u{0}.m3u'.format(str(item[1]['station_id'])),
-            'is_playable': True,
-            'context_menu': [
-                self.make_unfavorite_ctx(item[1]['station_id']),
-            ],
-            'properties': {
-                'fanart_image': self.plugin.addon.getAddonInfo('fanart')
-            },
-            'info': {
-                'Title': item[1]['title'],
-                'Artist': [self.plugin.get_string(30000)]
-            }
-        } for item in favorites.items()]
+                    'label': item[1]['title'],
+                    'icon': config['icons']['by_favorites'],
+                    'path': 'http://www.vtuner.com/vtunerweb/mms/m3u{0}.m3u'.format(str(item[1]['station_id'])),
+                    'is_playable': True,
+                    'context_menu': [
+                        self.make_unfavorite_ctx(item[1]['station_id']),
+                    ],
+                    'properties': {
+                        'fanart_image': self.plugin.addon.getAddonInfo('fanart')
+                    },
+                    'info': {
+                        'Title': item[1]['title'],
+                        'Artist': [self.plugin.get_string(30000)]
+                    }
+                } for item in favorites.items()]
 
     def add_favorite(self, title, station_id):
         """
@@ -483,8 +498,7 @@ class API(object):
         """
         Returns action url to Add to Favorites
         :param title:
-        :param icon:
-        :param id:
+        :param station_id:
         :return:
         """
         label = self.plugin.get_string(30120)
