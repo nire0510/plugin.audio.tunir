@@ -52,15 +52,15 @@ class API(object):
                     'artist_description': ''
                 }
             },
-            {
-                'label': self.plugin.get_string(30014),
-                'icon': 'DefaultMusicTop100.png',
-                'path': self.plugin.url_for('show_editors_choice'),
-                'properties': {
-                    'fanart_image': self.plugin.addon.getAddonInfo('fanart'),
-                    'artist_description': ''
-                }
-            },
+            # {
+            #     'label': self.plugin.get_string(30014),
+            #     'icon': 'DefaultMusicTop100.png',
+            #     'path': self.plugin.url_for('show_editors_choice'),
+            #     'properties': {
+            #         'fanart_image': self.plugin.addon.getAddonInfo('fanart'),
+            #         'artist_description': ''
+            #     }
+            # },
             {
                 'label': self.plugin.get_string(30015),
                 'icon': 'DefaultMusicSongs.png',

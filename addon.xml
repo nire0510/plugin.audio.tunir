@@ -14,13 +14,11 @@
     <platform>all</platform>
     <language>en</language>
     <summary lang="en">Listen to more than 35000 international radio broadcasts</summary>
-    <summary lang="he">האזינו ליותר מ- 35,000 תוכניות ותחנות רדיו</summary>
     <description lang="en">Browse a huge collection of radio stations and broadcasts from all around the world and listen the music you like!</description>
-    <description lang="he">דפדפו במגוון עצום של תחנות ותוכניות רדיו מרחבי העולם והאזינו למוסיקה שאתם אוהבים</description>
     <disclaimer lang="en">The credit for the content goes to the great vTuner online service. This is an unofficial add-on.</disclaimer>
     <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
     <website>http://www.vtuner.com/</website>
-    <email>nir@nirelbaz.com</email>
+    <email>nir[at]nirelbaz.com</email>
     <source>https://github.com/nire0510/plugin.audio.tunir</source>
   </extension>
 </addon>
